@@ -1,0 +1,44 @@
+/////////////////////////////////////////////////////////
+//						     						   //
+//					DOS Project 4					   //
+//						Phase 1						   //
+//													   //
+//			  By Yang Ou(ouyang89@ufl.edu)             //
+//               Xiang Xu(xuxu@cise.ufl.edu)           //
+// 													   //
+/////////////////////////////////////////////////////////
+
+1. What is working?
+All actor logging features for scala actors are working. 
+We used Gossip Protocol Implementation as the example.
+One log file for each actor is created after running the
+program. Logging is enabled simply by inheriting from a 
+class.
+
+2. How to run and where are the log file?
+Compile:  			$scalac *.scala
+Run:	    		$scala example.scala
+Console Output:     Building Network...
+					Protocol Start...
+					Protocol Finished.
+					Number of Nodes: 100
+					Time: 907 milliseconds
+The log files will be created in the same folder as the code.
+
+3. How we integrated logging with the actors?
+To use scala actors with logging, simply create a class extending
+a scala trait in actorlog.scala called "LogActor". In this trait, 
+the react and ! functions are overridden. In order to acquire the 
+source actor information, every message will be wrapped in a new 
+message wrapper before calling the super class(scala actor) and 
+will be unwrapped after receiving the message. In this case, every 
+actor will know all the information about who sent and who will 
+receive the message as well as what the message is.
+
+4. What log files are produced by the example.scala and how to interpret them?
+Log files of format "log_id.log" are created. Each log file is 
+created for each actor. In a log file, each entry shows the actor
+at what time(in milliseconds) at what order received or sent what
+message to which other actors which is shown below.
+(Log Format)CurrentActor@TimeMillis Order: Received/Sent [Message] from/to OtherActor
+e.g. "Actor-2@1384979885281 4: Sent [Finish] to Actor-0"
