@@ -6,3 +6,5 @@ Logging information about what actors send what message to what other actor can 
 First use 4-1 to generate log files. 
 
 Then use 4-2 to automatically generate MSCGen graphs about message exchange.
+
+How to run the program is specified in the Project Requirement file.
